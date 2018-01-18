@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="org.jinzhe.monitor.earlywarning.mapper.deployment.SDeploymentMapper">
+	
+	
+		<select id = "queryDeployMentSummary" resultType = "org.jinzhe.monitor.entity.deployment.DeployMent">
+			select
+				DATA_ITEM_ID as "dataItemID",
+				DATA_VALUE as "dataVal",
+				DATA_TIME as "dataTime"
+			from
+				D_DATA_HISTORY
+		</select>
+	
+	</mapper>

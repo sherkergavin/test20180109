@@ -1,0 +1,29 @@
+server:
+  port: 7903
+spring:
+  application:
+    name: jinzhe-monitor-schedule
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    healthcheck:
+      enable: true
+    service-url:
+      defaultZone: http://gwj:123@localhost:8888/eureka
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${server.port} 
+
+logging:
+  level:
+    org.jinzhe.monitor.web.api.user.IDataMonitorClient: DEBUG
+    org.apache.ibatis: DEBUG
+feign:
+  hystrix:
+    enabled: false
+ribbon:
+  eureka:
+    enabled: true
+
+  

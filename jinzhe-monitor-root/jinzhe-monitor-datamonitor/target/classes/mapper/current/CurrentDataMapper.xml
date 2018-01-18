@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="org.jinzhe.monitor.datamonitor.mapper.current.CurrentDataMapper">
+	
+		<select id="queryCurrentData" resultType="org.jinzhe.monitor.entity.data.DetectionData">
+			
+			SELECT
+			  DATA_ITEM_ID as 'dataItemId',
+			  DATE_TIME as 'dateTime',
+              DATA_VALUE as 'dataVal',
+              FRESH_RATE as 'freshRate',
+			  OVERFLOW_FLAG as 'overFlowFlag',
+			  BURR_FLAG as 'burrFlag',
+			  BURR_CONFIRM_VALUE as 'burrConfirmVal',
+			  UPDATE_TIME as 'updateTime'
+			FROM
+			  DATA_REALTIME
+			   
+		</select>
+	
+	
+	
+	
+	
+	
+	</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="org.jinzhe.monitor.datamonitor.mapper.user.SUserMapper">
+	
+	
+		<select id = "queryUserSummary" resultType = "org.jinzhe.monitor.entity.user.SUser">
+			select
+				ID as "uId",
+				VERSION as "version",
+				USER_NAME as "userName",
+				STAFF_CLASS as "staffClass"
+			from
+				S_USER
+		</select>
+	
+	</mapper>

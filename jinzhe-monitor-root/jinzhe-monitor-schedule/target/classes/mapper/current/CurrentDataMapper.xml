@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="org.jinzhe.monitor.schedule.mapper.current.CurrentDataMapper">
+	
+	
+		<select id="queryCurrentData" resultType="org.jinzhe.monitor.entity.data.OriginalData">
+			SELECT     
+				SYSID as "sysId", 
+				STATIONNAME as "stationName", 
+				ALINAME as "aliName",
+				TAGNAME as "tagName", 
+				LOGVALUE as "logVal", 
+				LOGTIME as "logTime", 
+				UNIT as "unit", 
+				TYPE as "type", 
+				MARK as "mark",
+				DATA_ITEM_ID as "dataItemId"
+			FROM         
+				DATA_ORIGINAL
+			WHERE
+				DATA_ITEM_ID is not null
+		</select>
+	
+	
+	
+		<insert id="putCurrentData">
+			insert into 
+				DATA_ORIGINAL
+				(
+					SYSID,
+					STATIONNAME,
+					ALINAME,
+					TAGNAME,
+					LOGVALUE,
+					LOGTIME,
+					UNIT,
+					TYPE,
+					MARK
+				) 
+				SELECT jinzhe_seq.nextval SYSID,GWJ.*
+				FROM(
+				<foreach collection="list" item="item" index="index" separator="UNION ALL">
+					SELECT
+        				#{item.stationName,jdbcType=VARCHAR} STATIONNAME,
+        				#{item.aliName,jdbcType=VARCHAR} ALINAME,
+        				#{item.tagName,jdbcType=VARCHAR} TAGNAME,
+        				#{item.logVal,jdbcType=FLOAT} LOGVALUE,
+        				#{item.logTime,jdbcType=DATE} LOGTIME,
+        				#{item.unit,jdbcType=VARCHAR} UNIT,
+        				#{item.type,jdbcType=VARCHAR} TYPE,
+        				#{item.mark,jdbcType=NUMERIC} MARK
+        			 FROM dual
+    			</foreach>
+					)GWJ
+		</insert>
+		
+		
+	
+
+		<update id="updCurrentData">
+    		begin  
+	        <foreach collection="list" item="item" index="index" separator=";" > 
+	            update DATA_ORIGINAL 
+	            <set>
+	                LOGVALUE = #{item.logVal,jdbcType=FLOAT},
+	                LOGTIME = #{item.logTime,jdbcType=DATE}
+	            </set>
+	            where 
+	            	TAGNAME = #{item.tagName,jdbcType=VARCHAR}
+	            and
+	            	DATA_ITEM_ID is not null
+	            </foreach>
+        	 ;end;
+    	</update>
+
+	
+		<delete id="delCurrentData">
+			
+			delete FROM DATA_ORIGINAL
+			
+		</delete>
+
+
+
+
+	</mapper>

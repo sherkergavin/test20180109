@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="org.jinzhe.monitor.schedule.mapper.current.OriginalDataMapper">
+		
+		<select id="queryOriginalData" resultType="org.jinzhe.monitor.entity.data.OriginalData">
+				
+			SELECT     
+				Id as 'sysId', 
+				StationName as 'stationName', 
+				AliName as 'aliName',
+				TagName as 'tagName', 
+				LogValue as 'logVal', 
+				LogTime as 'logTime', 
+				Unit as 'unit', 
+				Type as 'type', 
+				Mark as 'mark'
+			FROM         
+				SummaryData
+		</select>
+		
+		<insert id="putOriginalData">
+			insert into 
+				DATA_ORIGINAL
+				(
+					SYSID,
+					STATIONNAME,
+					ALINAME,
+					TAGNAME,
+					LOGVALUE,
+					LOGTIME,
+					UNIT,
+					TYPE,
+					MARK
+				) 
+				SELECT jinzhe_seq.nextval SYSID,GWJ.*
+				FROM(
+				<foreach collection="list" item="item" index="index" separator="UNION ALL">
+					SELECT
+        				#{item.stationName,jdbcType=VARCHAR} STATIONNAME,
+        				#{item.aliName,jdbcType=VARCHAR} ALINAME,
+        				#{item.tagName,jdbcType=VARCHAR} TAGNAME,
+        				#{item.logVal,jdbcType=FLOAT} LOGVALUE,
+        				#{item.logTime,jdbcType=DATE} LOGTIME,
+        				#{item.unit,jdbcType=VARCHAR} UNIT,
+        				#{item.type,jdbcType=VARCHAR} TYPE,
+        				#{item.mark,jdbcType=NUMERIC} MARK
+        			 FROM dual
+    			</foreach>
+					)GWJ
+		</insert>
+		
+		
+		
+		
+		
+		
+		
+	</mapper>

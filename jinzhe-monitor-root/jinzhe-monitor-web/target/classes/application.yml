@@ -1,0 +1,28 @@
+server:
+  port: 7901
+  context-path: /aquarius
+  servlet-path: /
+spring:
+  application:
+    name: jinzhe-monitor-web
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    healthcheck:
+      enable: true
+    service-url:
+      defaultZone: http://gwj:123@localhost:8888/eureka
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${server.port} 
+
+logging:
+  level:
+    org.jinzhe.monitor.web.api.user.IDataMonitorClient: DEBUG
+    org.jinzhe.monitor.web.api.deployment.IEarlyWarningClient: DEBUG 
+ 
+ 
+ 
+ 
+ 

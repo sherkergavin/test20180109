@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="org.jinzhe.monitor.schedule.mapper.current.HistoryDataMapper">
+		
+		<insert id="putHistoryData">
+			insert into 
+				DATA_HISTORY_ORIGINAL
+				(
+					SYSID,
+					STATIONNAME,
+					ALINAME,
+					TAGNAME,
+					LOGVALUE,
+					LOGTIME,
+					UNIT,
+					TYPE,
+					MARK,
+					DATA_ITEM_ID
+				) 
+				SELECT jinzhe_history_seq.nextval SYSID,GWJ.*
+				FROM(
+				<foreach collection="list" item="item" index="index" separator="UNION ALL">
+					SELECT
+        				#{item.stationName,jdbcType=VARCHAR} STATIONNAME,
+        				#{item.aliName,jdbcType=VARCHAR} ALINAME,
+        				#{item.tagName,jdbcType=VARCHAR} TAGNAME,
+        				#{item.logVal,jdbcType=FLOAT} LOGVALUE,
+        				#{item.logTime,jdbcType=DATE} LOGTIME,
+        				#{item.unit,jdbcType=VARCHAR} UNIT,
+        				#{item.type,jdbcType=VARCHAR} TYPE,
+        				#{item.mark,jdbcType=NUMERIC} MARK,
+        				#{item.dataItemId,jdbcType=NUMERIC} DATA_ITEM_ID
+        			 FROM dual
+    			</foreach>
+					)GWJ
+		</insert>
+
+	</mapper>

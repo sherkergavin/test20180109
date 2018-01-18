@@ -1,0 +1,4 @@
+org\jinzhe\monitor\entity\json\AjaxData.class
+org\jinzhe\monitor\entity\menu\Menu.class
+org\jinzhe\monitor\entity\user\SUser.class
+org\jinzhe\monitor\entity\user\UserInfo.class

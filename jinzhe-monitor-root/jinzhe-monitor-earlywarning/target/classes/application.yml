@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: jinzhe-monitor-earlywarning
+server:
+  port: 7802
+  servlet-path: /
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://gwj:123@localhost:8888/eureka
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${server.port}
+    

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: jinzhe-monitor-getway
+server:
+  port: 8898
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url: 
+      defaultZone: http://gwj:123@localhost:8888/eureka
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${server.port}
+zuul:
+  ignoredServices: 'jinzhe-monitor-schedule'
+  routes:
+    jinzhe-monitor-datamonitor: /datamonitor/**
+    jinzhe-monitor-earlywarning: /earlywarning/**

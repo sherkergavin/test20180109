@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="org.jinzhe.monitor.earlywarning.mapper.unknow.StationInfoMapper">
+	
+	
+		<select id="queryData" resultType="org.jinzhe.monitor.entity.station.StationInfo">
+			SELECT 
+				 STATION_ID as "stationId",
+				 STATION_NAME as "stationName",
+				 STATION_TYPE_ID as "stationTypeId",
+				 ADDRESS as "address",
+				 COORDINATE_X as "coordinateX",
+				 COORDINATE_Y as "coordinateY",
+				 MAGE_ORG_ID as "mageOrgId",
+				 DIVISION_ID as "divisionId",
+				 PINYIN_CODE as "pinYinCode",
+				 OLD_ID as "oldId",
+				 REMARK as "remark",
+				 DF as "df",
+				 SORT as "sort",
+				 CREATE_TIME as "createTime",
+				 UPDATE_TIME as "updateTime",
+				 DEF1 as "def1",
+				 DEF2 as "def2",
+				 DEF3 as "def3",
+				 WS_SYS_ID as "wsSysId",
+				 GRAPH_TYPE as "graphType",
+				 FEATID as "featId",
+				 WATER_SUPPLY as "waterSupply",
+				 STATION_STATUS as "stationStatus"
+			 FROM 
+			   STATION_INFO
+			
+		</select>
+	
+	
+	
+	
+	</mapper>

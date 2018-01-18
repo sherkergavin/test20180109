@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>jinzhe-monitor-gwj</groupId>
+    <artifactId>jinzhe-monitor-root</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+ 
+  <artifactId>jinzhe-monitor-web</artifactId>
+  <name>jinzhe-monitor-web</name>
+  <url>http://maven.apache.org</url>
+ <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<!-- ################## jsp 依赖 ################## -->
+		<!-- 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		-->
+		<!-- ################## jsp 依赖 ################## -->
+		
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jinzhe-monitor-entity</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+<!--	
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>3.2.1</version>
+		</dependency>		
+-->	
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>extjs</artifactId>
+			<version>4.2.1.883-1</version>
+		</dependency>
+		<dependency>
+        	<groupId>com.alibaba</groupId>
+        	<artifactId>fastjson</artifactId>
+        	<version>1.2.39</version>
+        </dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+	      <groupId>org.springframework.boot</groupId>
+	      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+	    </dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+	    	<groupId>org.springframework.cloud</groupId>
+	    	<artifactId>spring-cloud-starter-feign</artifactId>
+	    	<version>1.3.5.RELEASE</version>
+    	</dependency>
+    
+	    <dependency>
+	    	<groupId>org.springframework.cloud</groupId>
+	    	<artifactId>spring-cloud-starter-eureka</artifactId>
+	    	<version>1.3.5.RELEASE</version>
+	    </dependency>
+	    
+	    <dependency>
+	    	<groupId>org.springframework.boot</groupId>
+	    	<artifactId>spring-boot-starter-actuator</artifactId>
+	    </dependency>
+    
+<!--
+		<dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1.2</version>
+        </dependency>
+        
+        <dependency>
+        	<groupId>com.oracle</groupId>
+        	<artifactId>ojdbc6</artifactId>
+        	<version>11.2.0.1.0</version>
+        </dependency>
+        
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+-->		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+<!-- 		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+-->
+		<!--
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		-->
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+		<!--
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		-->
+
+	</build>
+
+</project>
